@@ -20,9 +20,11 @@ public class NumberService {
 		number.setId(id);
 		number.setStatus("IN_PROGRESS");
 		numberList.add(number);	
+		Random rand=new Random();
+		int delay=rand.nextInt(20000)+10000;
 		Runnable r = new Runnable() {
 	         public void run() {
-	        	 generateResult(number);
+	        	 generateResult(number,delay);
 	         }
 	     };
 	     new Thread(r).start();
@@ -61,9 +63,11 @@ public class NumberService {
 		for(Number number:numList) {
 		number.setId(id);
 		numberList.add(number);
+		Random rand=new Random();
+		int delay=rand.nextInt(1);
 		Runnable r=new Runnable() {
 			public void run() {
-				generateResult(number);
+				generateResult(number,delay);
 			}
 		};
 		new Thread(r).start();
@@ -71,12 +75,11 @@ public class NumberService {
 		return id;
 	}
 	
-	public synchronized void generateResult(Number number) {
+	public synchronized void generateResult(Number number,int delay) {
 		List<Integer> numArray=new ArrayList<>();
-		Random rand=new Random();
 		try {
 		for(int i=number.getGoal();i>=0;i=i-number.getStep()) {
-			Thread.sleep(rand.nextInt(3000));
+			Thread.sleep(delay);
 			numArray.add(i);
 		}
 		number.setResult(numArray);
