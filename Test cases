@@ -1,0 +1,56 @@
+# Number-Generator
+
+Test case 1:
+POST- /api/generate	{
+    "goal": "10",
+    "step": "2"
+}	
+Result:
+{
+    "task": "cddf3887-dff8-4875-8780-762ea951c71d"
+}
+Test case 2:
+GET - /api/tasks/cddf3887-dff8-4875-8780-762ea951c71d/status
+
+Result:
+		{
+    "result": "IN_PROGRESS"
+}
+
+Test case 3:
+	GET - /api/tasks/cddf3887-dff8-4875-8780-762ea951c71d?action=get_numlist
+ 
+ Result:
+{
+    "result": [
+        "10, 8, 6, 4, 2, 0"
+    ]
+}
+
+Test case 4:
+	POST - /api/bulkGenerate
+ 	[
+    {
+        "goal": "10",
+        "step": "2"
+    },
+    {
+        "goal": "100",
+        "step": "3"
+    }
+]
+Result:
+{
+    "task": "fba3832e-5526-468a-a59a-b381c9ae6a04"
+}
+
+Test case 5:
+	GET /api/tasks/fba3832e-5526-468a-a59a-b381c9ae6a04?action=get_numlist		
+ 
+ Result:
+{
+    "result": [
+        "10, 8, 6, 4, 2, 0",
+        "100, 97, 94, 91, 88, 85, 82, 79, 76, 73, 70, 67, 64, 61, 58, 55, 52, 49, 46, 43, 40, 37, 34, 31, 28, 25, 22, 19, 16, 13, 10, 7, 4, 1"
+    ]
+}
