@@ -1,5 +1,6 @@
 # Number-Generator
-Steps to run the code
+Steps to run the code.
+
 This application generates a sequence of numbers in the decreasing order till 0. 
 Simulated that the function to generate a  number takes a random time – say between 10 to 30 seconds .
 
